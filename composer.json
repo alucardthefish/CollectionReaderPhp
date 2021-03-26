@@ -1,0 +1,16 @@
+{
+    "name": "alucardthefish/asobancaria2001reader",
+    "description": "Utility for reading text files with Asobancaria2001 format",
+    "authors": [
+        {
+            "name": "Sergio Ortiz",
+            "email": "sergiop18@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "."
+        }
+    },
+    "require": {}
+}
