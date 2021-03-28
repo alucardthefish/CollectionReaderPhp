@@ -117,10 +117,13 @@ class Recaudos
 
         $fechaRecaudo = $this->getRegHeaderData()['fechaRecaudo'];
         $recaudos = $this->loadCollectionFile();
+        $recaudosCounter = 1;
+        echo "No.   |   Referencia  |   TipoPago    |   Valor   |   Fecha   |<br>";
 
         foreach ($recaudos as $recaudo) {
             
-            echo $recaudo['referencia'] . " - 1 - " . $recaudo['valor'] . " - " . $fechaRecaudo . "<br>";
+            echo "$recaudosCounter " . $recaudo['referencia'] . " - 1 - " . $recaudo['valor'] . " - " . $fechaRecaudo . "<br>";
+            $recaudosCounter += 1;
         }
     }
 
