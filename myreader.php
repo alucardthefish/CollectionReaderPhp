@@ -18,8 +18,13 @@ use app\components\Recaudos;
 <body>
 	<h2>Cargar recaudo</h2>
 	<form action="Procesar.php" method="post" enctype="multipart/form-data">
-		<input type="text">
 		<input type="file" name="myFiles[]" id="filez" multiple>
+		<input type="submit" value="submit">
+	</form>
+	<br>
+	<h2>Cargar archivo recaudo excel</h2>
+	<form action="ProcesarExcel.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="excelFiles[]" id="filexlz" multiple>
 		<input type="submit" value="submit">
 	</form>
 </body>
