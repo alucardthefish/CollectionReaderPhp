@@ -1,19 +1,38 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use app\classes\Recaudos;
+use app\classes\Asobancaria2001Collector;
+use app\classes\CollectorContext;
+use app\classes\ExcellCollector;
 
-$filesObtained = $_FILES['myFiles']['tmp_name'];
+$filePaths = $_FILES['myFiles']['tmp_name'];
+$fileTypes = $_FILES['myFiles']['type'];
+$fileNames = $_FILES['myFiles']['name'];
 
-if ($filesObtained[0] != '') { //count($filesObtained) > 0
-    echo "El archivo o los archivos fueron subidos correctamente";
+$numFiles = count($_FILES['myFiles']['name']);
 
-    echo "<br><h5>Leyendo archivo de recaudo subido</h5>";
-    foreach ($filesObtained as $file) {
-        $reader = new Recaudos($file);
-        $reader->getAllData();
+
+$collectorContext = new CollectorContext();
+
+// Check size of uploaded files
+if (count($filePaths) > 0 && $filePaths[0] != '') {
+    // Check type of uploaded files
+    for ($i=0; $i < $numFiles; $i++) { 
+        $fileExt = pathinfo($fileNames[$i], PATHINFO_EXTENSION);
+        $isContextOk = true;
+        if ($fileExt == 'txt' || $fileExt == 'TXT') {
+            $collectorContext->setCollector(new Asobancaria2001Collector());
+        } elseif ($fileExt == 'xls' || $fileExt == 'xlsx') {
+            $collectorContext->setCollector(new ExcellCollector());
+        } else {
+            echo "<br>File type is not supported";
+            $isContextOk = false;
+        }
+
+        if ($isContextOk) {
+            echo $collectorContext->obtainCollectionData($filePaths[$i]);
+        }
     }
-
 } else {
-    echo "Ningun archivo fue seleccionado";
+    echo "<br>None file selected";
 }

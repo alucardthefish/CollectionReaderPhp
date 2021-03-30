@@ -6,6 +6,6 @@ class ExcellCollector implements ICollector {
 
     public function getCollectionsArray($collectionFiles)
     {
-        echo "Getting the collection array from excel file";
+        return "<br>Getting the collection array from excel file";
     }
 }
