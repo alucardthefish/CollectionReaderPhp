@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use app\components\Recaudos;
+use app\classes\Recaudos;
 
 $filesObtained = $_FILES['myFiles']['tmp_name'];
 

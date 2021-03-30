@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace app\classes;
 
 require_once __DIR__ . '/../config/globals.php';
 
