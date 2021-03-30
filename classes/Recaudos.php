@@ -2,6 +2,8 @@
 
 namespace app\classes;
 
+use app\utils\Utils;
+
 require_once __DIR__ . '/../config/globals.php';
 
 class Recaudos
@@ -115,14 +117,18 @@ class Recaudos
     public function getAllData()
     {
 
-        $fechaRecaudo = $this->getRegHeaderData()['fechaRecaudo'];
+        $fechaRecaudo = Utils::stringifyDate($this->getRegHeaderData()['fechaRecaudo']);
         $recaudos = $this->loadCollectionFile();
         $recaudosCounter = 1;
-        echo "No.   |   Referencia  |   TipoPago    |   Valor   |   Fecha   |<br>";
+        echo "<pre>";
+        echo "No.|   Referencia  |   TipoPago    |   Valor   |   Fecha   |<br>";
+        echo "</pre>";
 
         foreach ($recaudos as $recaudo) {
+            echo "<pre>";
+            echo "$recaudosCounter  " . $recaudo['referencia'] . "   - 1 -   " . $recaudo['valor'] . "   -  " . $fechaRecaudo . "<br>";
+            echo "</pre>";
             
-            echo "$recaudosCounter " . $recaudo['referencia'] . " - 1 - " . $recaudo['valor'] . " - " . $fechaRecaudo . "<br>";
             $recaudosCounter += 1;
         }
     }

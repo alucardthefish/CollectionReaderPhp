@@ -24,7 +24,7 @@ if ($numFiles > 0 && $filePaths[0] != '') {
         } elseif ($fileExt == 'xls' || $fileExt == 'xlsx') {
             $collectorContext->setCollector(new ExcellCollector());
         } else {
-            echo "<br>File type is not supported";
+            echo "<br>File type with extension $fileExt is not supported";
             $isContextOk = false;
         }
 
