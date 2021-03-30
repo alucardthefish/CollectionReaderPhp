@@ -6,16 +6,15 @@ use app\classes\CollectorContext;
 use app\classes\ExcellCollector;
 
 $filePaths = $_FILES['myFiles']['tmp_name'];
-$fileTypes = $_FILES['myFiles']['type'];
 $fileNames = $_FILES['myFiles']['name'];
 
-$numFiles = count($_FILES['myFiles']['name']);
+$numFiles = count($fileNames);
 
 
 $collectorContext = new CollectorContext();
 
 // Check size of uploaded files
-if (count($filePaths) > 0 && $filePaths[0] != '') {
+if ($numFiles > 0 && $filePaths[0] != '') {
     // Check type of uploaded files
     for ($i=0; $i < $numFiles; $i++) { 
         $fileExt = pathinfo($fileNames[$i], PATHINFO_EXTENSION);
