@@ -13,6 +13,12 @@ if ($filesObtained[0] != '') { //count($filesObtained) > 0
 
     echo "<br><h5>Leyendo archivo de recaudo subido</h5>";
     
+    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filesObtained[0]);
+    $data = $spreadsheet->getActiveSheet()->toArray();
+    echo "<pre>";
+    echo var_dump($data);
+    echo "</pre>";
+    exit;
 
     // $reader = PHPExcel_IOFactory::createReaderForFile($filesObtained[0]);
     // $excel_obj = $reader->load($filesObtained[0]);
