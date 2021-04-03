@@ -17,9 +17,9 @@ $collectorContext = new CollectorContext();
 if ($numFiles > 0 && $filePaths[0] != '') {
     // Check type of uploaded files
     for ($i=0; $i < $numFiles; $i++) { 
-        $fileExt = pathinfo($fileNames[$i], PATHINFO_EXTENSION);
+        $fileExt = strtolower(pathinfo($fileNames[$i], PATHINFO_EXTENSION));
         $isContextOk = true;
-        if ($fileExt == 'txt' || $fileExt == 'TXT') {
+        if ($fileExt == 'txt') {
             $collectorContext->setCollector(new Asobancaria2001Collector());
         } elseif ($fileExt == 'xls' || $fileExt == 'xlsx') {
             $collectorContext->setCollector(new ExcellCollector());
@@ -29,7 +29,10 @@ if ($numFiles > 0 && $filePaths[0] != '') {
         }
 
         if ($isContextOk) {
-            echo $collectorContext->obtainCollectionData($filePaths[$i]);
+            echo "<pre>";
+            var_dump($collectorContext->obtainCollectionData($filePaths[$i]));
+            echo "</pre>";
+            //echo $collectorContext->obtainCollectionData($filePaths[$i]);
         }
     }
 } else {
