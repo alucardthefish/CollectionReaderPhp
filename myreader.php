@@ -33,8 +33,10 @@ use app\components\Recaudos;
 <?php
 /**
  * TODO:
- * 1. Refactor de codigo
- * 2. Identificación del tipo de archivo para asi seleccionar el lector adecuado para extraer datos de recaudos
- * 3. Aplicar un patrón de diseño para tener varios lectores que leen un determinado tipo de archivo asobancaria txt o excel
+ * 1. Refactor de codigo [hecho]
+ * 2. Identificación del tipo de archivo para asi seleccionar el lector adecuado para extraer datos de recaudos [hecho]
+ * 3. Aplicar un patrón de diseño para tener varios lectores que leen un determinado tipo de archivo asobancaria txt o excel [hecho]
+ * 4. Consolidar metodo que agrupe todos los datos extraidos de los diferentes archivos y retorne un arreglo 
+ * 5. Metodo que transforme el arreglo a un archivo de excel formato xls
  */
 
