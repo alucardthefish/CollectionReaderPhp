@@ -11,9 +11,6 @@ class Asobancaria2001Collector implements ICollector {
 
     public function getCollectionsArray($collectionFiles)
     {
-        // $collectionArrayToApplyPayments = new Recaudos($collectionFiles);
-        // $collectionArrayToApplyPayments->getAllData();
-        // return "<br>Getting the collections array from Asobancaria2001 txt file";
 
         $asofile = fopen($collectionFiles, "r") or die ("No se pudo abrir el archivo");
         
@@ -35,6 +32,7 @@ class Asobancaria2001Collector implements ICollector {
                 $cedula = substr($tmp_string, 2, 46);
                 $valor = substr($tmp_string, 50, 12);
                 $numAutorizacion = substr($tmp_string, 74, 6);
+                $observaciones = $numAutorizacion === "000000" ? "" : "Aprobacion No. " . $numAutorizacion;
                 
                 $tmp_array = array(
                     "referencia" => (int)$referencia,
@@ -42,7 +40,7 @@ class Asobancaria2001Collector implements ICollector {
                     "valor" => (int)$valor,
                     "tipoPago" => 1,
                     "fecha" => Utils::stringifyDate($fechaRecaudo),
-                    "observaciones" => "Aprobacion No. " . $numAutorizacion
+                    "observaciones" => $observaciones
                 );
                 $recaudos_matrix[] = $tmp_array;
             }
