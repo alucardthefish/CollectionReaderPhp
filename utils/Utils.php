@@ -36,6 +36,8 @@ class Utils
         "057" => "BANCO COLMENA"
     );
 
+    private static $noApplied = array("13", "14");
+
     public static function stringifyDate($asoDate) {
         $year = substr($asoDate, 0, 4);
         $month = substr($asoDate, 4, 2);
@@ -46,5 +48,16 @@ class Utils
 
     public static function getBankByCode($code) {
         return self::$banks[$code];
+    }
+
+    public static function getProcessTypeFromRefCell($ref) {
+        if (strlen($ref) > 12) {
+            return substr($ref, 14, 2);
+        }
+        return "01";
+    }
+
+    public static function canPaymentBeApplied($ref) {
+        return !in_array(self::getProcessTypeFromRefCell($ref), self::$noApplied);
     }
 }
