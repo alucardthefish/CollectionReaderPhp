@@ -34,6 +34,7 @@ class Asobancaria2001Collector implements ICollector {
                 $referencia = substr($tmp_string, 2, 48);
                 $cedula = substr($tmp_string, 2, 46);
                 $valor = substr($tmp_string, 50, 12);
+                $numAutorizacion = substr($tmp_string, 74, 6);
                 
                 $tmp_array = array(
                     "referencia" => (int)$referencia,
@@ -41,7 +42,7 @@ class Asobancaria2001Collector implements ICollector {
                     "valor" => (int)$valor,
                     "tipoPago" => 1,
                     "fecha" => Utils::stringifyDate($fechaRecaudo),
-                    "observaciones" => ""
+                    "observaciones" => "Aprobacion No. " . $numAutorizacion
                 );
                 $recaudos_matrix[] = $tmp_array;
             }
