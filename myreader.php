@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 
 use app\components\Recaudos;
-
+use app\utils\Utils;
 
 ?>
 
@@ -27,6 +27,7 @@ use app\components\Recaudos;
 		<input type="file" name="excelFiles[]" id="filexlz" multiple>
 		<input type="submit" value="submit">
 	</form>
+	<?php echo Utils::getProcessTypeFromRefCell("00873000") ?>
 </body>
 </html>
 

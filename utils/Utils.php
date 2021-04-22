@@ -58,6 +58,7 @@ class Utils
     }
 
     public static function canPaymentBeApplied($ref) {
-        return !in_array(self::getProcessTypeFromRefCell($ref), self::$noApplied);
+        //return !in_array(self::getProcessTypeFromRefCell($ref), self::$noApplied);
+        return self::getProcessTypeFromRefCell($ref) === "01";
     }
 }
