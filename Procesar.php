@@ -46,11 +46,26 @@ if ($numFiles > 0 && $filePaths[0] != '') {
     // Creating .xls file for apply payments
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
-    $sheet->setCellValue('A1', 'Hola mundo !');
+    //$sheet->setCellValue('A1', 'Hola mundo !');
+
+    //$writer = new Xls($spreadsheet);
+    //$writer->save('holamundo.xls');
+    // https://programacion.net/articulo/como_forzar_la_descarga_de_un_fichero_en_php_1935#:~:text=Para%20descargar%20un%20fichero%20en,directorio%20del%20servidor%20en%20PHP.
+    $indice = 0;
+    
+    foreach ($pagosParaAplicar as $pagosDeArchivo) {
+        foreach ($pagosDeArchivo as $registro) {
+            $indice += 1;
+            $sheet->setCellValue("A$indice", $registro["cedula"]);
+            $sheet->setCellValue("B$indice", $registro["tipoPago"]);
+            $sheet->setCellValue("C$indice", $registro["valor"]);
+            $sheet->setCellValue("D$indice", $registro["fecha"]);
+            $sheet->setCellValue("E$indice", $registro["observaciones"]);
+        }
+    }
 
     $writer = new Xls($spreadsheet);
-    $writer->save('holamundo.xls');
-    // https://programacion.net/articulo/como_forzar_la_descarga_de_un_fichero_en_php_1935#:~:text=Para%20descargar%20un%20fichero%20en,directorio%20del%20servidor%20en%20PHP.
+    $writer->save('55522.xls');
 
 } else {
     echo "<br>None file selected";
