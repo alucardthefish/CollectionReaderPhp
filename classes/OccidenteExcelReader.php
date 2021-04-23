@@ -17,10 +17,10 @@ class OccidenteExcelReader implements IBankExcelReader {
                 
                 $collection = array(
                     "referencia" => $ref,
-                    "cedula" => substr($excelArray[$row]["L"], 0, 10), 
-                    "valor" => $excelArray[$row]["J"],
+                    "cedula" => (int)substr($excelArray[$row]["L"], 0, 10), 
+                    "valor" => (int)Utils::xlsNormalizeValue($excelArray[$row]["J"]),
                     "tipoPago" => 1,
-                    "fecha" => $excelArray[$row]["D"],
+                    "fecha" => Utils::xlsStringifyDate($excelArray[$row]["D"]),
                     "observaciones" => ""
                 );
                 $collections[] = $collection;

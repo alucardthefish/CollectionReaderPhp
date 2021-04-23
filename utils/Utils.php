@@ -46,6 +46,18 @@ class Utils
         return $date;
     }
 
+    public static function xlsStringifyDate($date) {
+        $d = "2021/01/04";
+        $year = substr($date, 0, 4);
+        $day = substr($date, 5, 2);
+        $month = substr($date, 8, 2);
+        return $day . "/" . $month . "/" . $year;
+    }
+
+    public static function xlsNormalizeValue($value) {
+        return str_replace(",", "", substr_replace($value, "", -3));
+    }
+
     public static function getBankByCode($code) {
         return self::$banks[$code];
     }
