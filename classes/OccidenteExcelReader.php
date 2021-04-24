@@ -21,7 +21,7 @@ class OccidenteExcelReader implements IBankExcelReader {
                     "valor" => (int)Utils::xlsNormalizeValue($excelArray[$row]["J"]),
                     "tipoPago" => 1,
                     "fecha" => Utils::xlsStringifyDate($excelArray[$row]["D"]),
-                    "observaciones" => ""
+                    "observaciones" => Utils::xlsCheckReceipt($ref)
                 );
                 $collections[] = $collection;
             }

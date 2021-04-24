@@ -49,13 +49,21 @@ class Utils
     public static function xlsStringifyDate($date) {
         $d = "2021/01/04";
         $year = substr($date, 0, 4);
-        $day = substr($date, 5, 2);
-        $month = substr($date, 8, 2);
+        $month = substr($date, 5, 2);
+        $day = substr($date, 8, 2);
         return $day . "/" . $month . "/" . $year;
     }
 
     public static function xlsNormalizeValue($value) {
         return str_replace(",", "", substr_replace($value, "", -3));
+    }
+
+    public static function xlsCheckReceipt($ref) {
+        if (strlen($ref) > 12 && self::getProcessTypeFromRefCell($ref) === "01") {
+            $receipt = substr($ref, 18, 8);
+            return "Recibo No. $receipt";
+        }
+        return "";
     }
 
     public static function getBankByCode($code) {
