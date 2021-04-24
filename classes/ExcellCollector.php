@@ -18,6 +18,9 @@ class ExcellCollector implements ICollector {
         if ($checkFileData["banco"] == "Occidente") {
             $bankReaderContext->setBankExcelReader(new OccidenteExcelReader());
         } // Else do same for av villa
+        else {
+            $bankReaderContext->setBankExcelReader(new AvVillasExcelReader());
+        }
 
         return $bankReaderContext->getCollections($excelData);
 

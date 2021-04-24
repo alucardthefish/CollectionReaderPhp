@@ -55,7 +55,11 @@ class Utils
     }
 
     public static function xlsNormalizeValue($value) {
-        return str_replace(",", "", substr_replace($value, "", -3));
+        return str_replace([",", "$"], "", substr_replace($value, "", -3));
+    }
+
+    public static function xlsGetCedulaAvVillasFromRef($ref) {
+        return substr_replace($ref, "", -2);
     }
 
     public static function xlsCheckReceipt($ref) {

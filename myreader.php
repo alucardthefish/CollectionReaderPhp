@@ -21,13 +21,6 @@ use app\utils\Utils;
 		<input type="file" name="myFiles[]" id="filez" multiple>
 		<input type="submit" value="submit">
 	</form>
-	<br>
-	<h2>Cargar archivo recaudo excel</h2>
-	<form action="ProcesarExcel.php" method="post" enctype="multipart/form-data">
-		<input type="file" name="excelFiles[]" id="filexlz" multiple>
-		<input type="submit" value="submit">
-	</form>
-	<?php echo Utils::getProcessTypeFromRefCell("00873000") ?>
 </body>
 </html>
 
