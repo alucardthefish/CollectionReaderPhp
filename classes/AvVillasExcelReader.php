@@ -24,7 +24,7 @@ class AvVillasExcelReader implements IBankExcelReader {
                 "valor" => (int)Utils::xlsNormalizeValue($valor),
                 "tipoPago" => 1,
                 "fecha" => Utils::xlsStringifyDate($fecha),
-                "observaciones" => "Pago realizado en oficina $sucursal"
+                "observaciones" => ""
             );
 
             $collections[] = $collection;

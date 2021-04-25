@@ -9,18 +9,27 @@ use app\utils\Utils;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<title>Home</title>
 </head>
-<body>
-	<h2>Cargar recaudo</h2>
-	<form action="Procesar.php" method="post" enctype="multipart/form-data">
-		<input type="file" name="myFiles[]" id="filez" multiple>
-		<input type="submit" value="submit">
-	</form>
+<body class="container mx-auto px-4 my-4">
+	<h2 class="text-3xl bold">Cargar Archivos de Recaudo</h2>
+	<div class="my-4 mx-2">
+		<main>
+			<form action="Procesar.php" method="post" enctype="multipart/form-data">
+				<input class="inline-block px-16 py-16 bg-green-700 bold text-white" type="file" name="myFiles[]" id="filez" multiple>
+				<!-- <label class="relative block px-16 py-16 bg-green-700 bold text-white" for="filez" id="filezLabel">
+					Selecciona o Arrastra archivos aqui
+				</label> -->
+				<input type="submit" value="submit">
+			</form>
+		</main>
+	</div>
+
 </body>
 </html>
 
