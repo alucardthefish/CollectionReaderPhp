@@ -18,14 +18,12 @@ use app\utils\Utils;
 </head>
 <body class="container mx-auto px-4 my-4">
 	<h2 class="text-3xl bold">Cargar Archivos de Recaudo</h2>
+	<h3 class="text-2xl bold">para generar archivo de aplicacion de pagos</h3>
 	<div class="my-4 mx-2">
 		<main>
 			<form action="Procesar.php" method="post" enctype="multipart/form-data">
-				<input class="inline-block px-16 py-16 bg-green-700 bold text-white" type="file" name="myFiles[]" id="filez" multiple>
-				<!-- <label class="relative block px-16 py-16 bg-green-700 bold text-white" for="filez" id="filezLabel">
-					Selecciona o Arrastra archivos aqui
-				</label> -->
-				<input type="submit" value="submit">
+				<input class="block" type="file" name="myFiles[]" id="filez" multiple>
+				<input class="block my-4 py-4 rounded-xl px-6 bg-green-600 text-white hover:bg-green-500 focus:outline-none" type="submit" value="Generar">
 			</form>
 		</main>
 	</div>
