@@ -67,6 +67,13 @@ if ($numFiles > 0 && $filePaths[0] != '') {
     $writer = new Xls($spreadsheet);
     $writer->save('55522.xls');
 
+    // Check if file was created successfully
+    if (file_exists('55522.xls')) {
+        echo "<h2>El archivo fue creado satisfactoriamente</h2>";
+
+        echo '<br><a href="55522.xls">Abrir archivo</a>';
+    }
+
 } else {
-    echo "<br>None file selected";
+    echo "<br>Ningun archivo fue seleccionado";
 }
